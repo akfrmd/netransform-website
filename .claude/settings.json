@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(python3 -c ' *)",
-      "Bash(python3 \"c:/Coding_Projects/netransform-website/_patch2.py\")"
+      "Bash(python3 \"c:/Coding_Projects/netransform-website/_patch2.py\")",
+      "Bash(python3 \"c:/Coding_Projects/netransform-website/_fix_location.py\")"
     ]
   }
 }
