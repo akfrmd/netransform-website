@@ -1,0 +1,45 @@
+[
+  {
+    "id": "senior-program-manager",
+    "title": "Senior Program Manager",
+    "location": "Washington D.C. Metro Area",
+    "type": "Full-time",
+    "sections": [
+      {
+        "heading": "About the Role",
+        "body": "neTransform is seeking a Senior Program Manager to lead complex technology transformation initiatives for federal agency clients. The ideal candidate brings deep federal consulting experience, strong stakeholder management skills, and a proven track record of delivering large-scale programs on time and within budget."
+      },
+      {
+        "heading": "Key Responsibilities",
+        "items": [
+          "Lead program planning, execution, and governance across multi-workstream federal technology engagements",
+          "Manage stakeholder relationships at senior levels across government and contractor teams",
+          "Develop and maintain integrated master schedules, risk registers, and executive status reporting",
+          "Drive issue resolution and decision-making to keep programs aligned with mission objectives",
+          "Support business development activities including proposal contributions and client presentations",
+          "Mentor junior team members and contribute to internal knowledge-sharing initiatives"
+        ]
+      },
+      {
+        "heading": "Required Qualifications",
+        "items": [
+          "10+ years of program management experience, with at least 5 years in federal consulting environments",
+          "PMP certification required; ITIL, COBIT, or Agile/SAFe certifications a strong plus",
+          "Proven experience managing programs at federal agencies (DoD, DHS, IRS, or similar)",
+          "Strong command of PMBOK methodologies, Agile frameworks, and earned value management",
+          "Excellent written and verbal communication skills with executive-level briefing experience",
+          "Bachelor's degree in a relevant field required"
+        ]
+      },
+      {
+        "heading": "Preferred Qualifications",
+        "items": [
+          "Active security clearance (Secret or higher preferred)",
+          "Experience with cloud modernization, ERP implementations, or IT infrastructure programs",
+          "MBA or advanced degree in a relevant field",
+          "Prior experience at a Big 4 or major federal consulting firm"
+        ]
+      }
+    ]
+  }
+]
