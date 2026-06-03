@@ -818,7 +818,7 @@ function escHtml(s) {
 }
 
 function loadJobs() {
-  fetch('jobs.json')
+  return fetch('jobs.json')
     .then(function(r){ return r.json(); })
     .then(function(data){
       JOBS_DATA = data;
@@ -848,7 +848,7 @@ function renderPositions() {
   }).join('');
 }
 
-function showJob(idx) {
+function showJob(idx, skipHistory) {
   var job = JOBS_DATA[idx];
   if (!job) return;
   document.getElementById('jd-title').textContent = job.title;
@@ -868,7 +868,8 @@ function showJob(idx) {
     html += '</div>';
   });
   document.getElementById('jd-content').innerHTML = html;
-  showPage('job');
+  showPage('job', true);
+  if (!skipHistory) history.pushState({ page: 'job', jobIdx: idx, jobId: job.id }, '', '#job-' + job.id);
 }
 
 function submitContact(e) {
@@ -907,7 +908,16 @@ function showPage(page, skipHistory) {
   window.scrollTo({ top: 0, behavior: 'instant' });
 }
 window.addEventListener('popstate', function(e) {
-  var page = (e.state && e.state.page) || location.hash.replace('#', '') || 'home';
+  var state = e.state || {};
+  var hash = location.hash.replace('#', '');
+  if (state.page === 'job') { showJob(state.jobIdx, true); return; }
+  if (hash.indexOf('job-') === 0) {
+    var jobId = hash.slice(4);
+    for (var i = 0; i < JOBS_DATA.length; i++) {
+      if (JOBS_DATA[i].id === jobId) { showJob(i, true); return; }
+    }
+  }
+  var page = state.page || hash || 'home';
   if (MAIN_PAGES.indexOf(page) < 0) page = 'home';
   showPage(page, true);
 });
@@ -916,6 +926,21 @@ window.addEventListener('scroll', () => {
 });
 document.addEventListener('DOMContentLoaded', function() {
   var hash = location.hash.replace('#', '');
+  if (hash.indexOf('job-') === 0) {
+    history.replaceState({ page: 'careers' }, '', '#careers');
+    showPage('careers', true);
+    loadJobs().then(function() {
+      var jobId = hash.slice(4);
+      for (var i = 0; i < JOBS_DATA.length; i++) {
+        if (JOBS_DATA[i].id === jobId) {
+          showJob(i, true);
+          history.pushState({ page: 'job', jobIdx: i, jobId: jobId }, '', '#job-' + jobId);
+          break;
+        }
+      }
+    });
+    return;
+  }
   var page = MAIN_PAGES.indexOf(hash) >= 0 ? hash : 'home';
   history.replaceState({ page: page }, '', '#' + page);
   if (page !== 'home') showPage(page, true);
